@@ -1,0 +1,101 @@
+import 'package:flutter/material.dart';
+import 'Utilities.dart';
+
+class DayThreeProgram extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AppBar MyAppBar = utils.MyAppBar("برنامج اليوم الثالث", 0, context);
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: MyAppBar,
+        body: Container(
+            decoration: new BoxDecoration(
+              image: new DecorationImage(
+                  image: new AssetImage("assets/imgs/DayThreeBG.png"),fit: BoxFit.cover
+              ),
+            ),child: DayaThreeProgramBuild()),
+      ),
+    );
+    ;
+  }
+}
+
+class DayaThreeProgramBuild extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return
+      Center(
+        child: Container(
+            margin: EdgeInsets.only(top:100.0,bottom: 178),
+            child: ListView(
+              children: <Widget>[
+                CreateElement("قداس", "9.00~7.00"),
+                utils.fasel,
+                CreateElement("فطار", "10.00~9.00"),
+                utils.fasel,
+                CreateElement("ترانيم", "11.30~11.00"),
+                utils.fasel,
+                CreateElement("المعزى الحكيم", "01.00~12.00"),
+                utils.fasel,
+                CreateElement("الغداء", "2.00"),
+                utils.fasel,
+                CreateElement("مغادرة", "4.00"),
+                ],
+            )),
+      );
+
+  }
+
+  CreateElement(String s, String t) {
+    double size = 20;
+    if(s.length > 10)
+      size = 18;
+    if(s.length > 15)
+      size = 16;
+    return Container(
+      margin: EdgeInsets.only(right: 65.0),
+      child: Row(
+        textDirection: TextDirection.rtl,
+        children: <Widget>[
+          utils.Arrow,
+          Container(
+            width: 15.0,
+          ),
+          Container(
+            decoration: BoxDecoration(
+                color: Color.fromRGBO(244, 209, 157, 0.75),
+                shape: BoxShape.rectangle,
+                borderRadius: new BorderRadius.circular(8.0),
+                boxShadow: <BoxShadow>[
+                  new BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 10.0,
+                      offset: new Offset(0, 10)
+                  )
+                ]
+            ),
+            child: Center(
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      s,
+                      maxLines: 1,
+                      style: TextStyle(fontSize: size,fontWeight: FontWeight.w900),
+                    ),
+                    Text(
+                      t,
+                      maxLines: 1,
+                      style: TextStyle(fontSize: 20.0),
+                    ),
+                  ],
+                )
+            ),
+            width: 120.0,
+            height: 70.0,
+          ),
+        ],
+      ),
+    );
+  }
+}
