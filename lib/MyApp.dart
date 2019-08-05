@@ -10,7 +10,7 @@ import 'AboutUs.dart';
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    AppBar MyAppBar = utils.MyAppBar("إجتماع خدام", 0, context);
+    AppBar MyAppBar = utils.MyAppBar("مؤتمر طاجرو", 0, context);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,

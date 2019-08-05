@@ -81,7 +81,7 @@ Widget CreateElement(String s, Null Function() param1) {
             child: Center(
                 child: Text(
               s,
-              style: TextStyle(fontSize: 20.0),
+              style: TextStyle(fontWeight: FontWeight.w900,fontSize: 20.0),
             )),
             width: 120.0,
             height: 40.0,

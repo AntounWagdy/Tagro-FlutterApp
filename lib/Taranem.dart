@@ -30,6 +30,8 @@ Widget TaranemBuild(BuildContext context){
           children: <Widget>[
             CreateElement(context,"الشعار", utils.She3ar),
             utils.fasel,
+            CreateElement(context,"جايين يا أبانا", utils.Gayeen),
+            utils.fasel,
             CreateElement(context,"آتى إليك", utils.aty_elek),
             utils.fasel,
             CreateElement(context,"إلهنا الطيب", utils.elahna_eltayeb),
@@ -48,6 +50,15 @@ Widget TaranemBuild(BuildContext context){
             utils.fasel,
             CreateElement(context,"يا من بحضوره", utils.ya_man),
             utils.fasel,
+            CreateElement(context,"حياتى تشبه قيثارة", utils.hayaty),
+            utils.fasel,
+            CreateElement(context,"إعزف فى حياتك", utils.E3zef),
+            utils.fasel,
+            CreateElement(context,"علمنى يا رب أكون صورة", utils.Almny_Akon_sora),
+            utils.fasel,
+            CreateElement(context,"مريح التعابى", utils.elta3aba),
+            utils.fasel,
+
           ],
         ));
   }
@@ -82,6 +93,7 @@ Widget CreateElement(BuildContext context ,String s, String content) {
                 child: Text(
                   s,
                   style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.w900),
+                  textAlign: TextAlign.center,
                 )),
             width: 120.0,
             height: 40.0,

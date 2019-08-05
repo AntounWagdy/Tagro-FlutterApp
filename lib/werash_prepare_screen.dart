@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -69,15 +70,7 @@ class werash_prepare_screen extends StatelessWidget {
         .files
         .list(q: "'1IVh65cAlXCSs4d4Ms4xTGT-8GnrFuxvK' in parents");
 
-    var DownloadsDirectory = new Directory(this.appDocPath);
-    List<FileSystemEntity> c =
-        await DownloadsDirectory.list(recursive: false, followLinks: false)
-            .toList();
-    for (int i = 0; i < c.length; i++) {
-      if (!c[i].path.contains(".rtf_tagro")) c.removeAt(i);
-    }
     for (int i = 0; i < fileList.files.length; i++) {
-      if (!Has(c, fileList.files[i].id))
         await DownloadFile(_client, fileList.files[i].id);
     }
   }
@@ -93,6 +86,7 @@ class werash_prepare_screen extends StatelessWidget {
     }
     await download.writeAsBytes(data);
     print("Download: " + download.path + " has been downloaded");
+    utils.sp.setBool("done", true);
   }
 
   bool Has(List<FileSystemEntity> e, String id) {
@@ -112,7 +106,6 @@ class werash_prepare_screen extends StatelessWidget {
             .toList();
 
     for (int i = 0; i < c.length; i++) {
-      print(c[i].path);
       if (!c[i].path.contains(".rtf_tagro"))
         c.removeAt(i--);
     }
@@ -121,16 +114,21 @@ class werash_prepare_screen extends StatelessWidget {
     File read;
     for (int i = 0; i < c.length; i++) {
       read = new File(c[i].path);
-      String content = await read.readAsString();
+      Encoding e = new Utf8Codec();
+      List<String>content = await read.readAsLines(encoding: e);
       print("element "+ c[i].path+" has been added");
-      utils.werash_List.add(content);
+      utils.werash_List.addAll(content);
     }
   }
 
   Future<void> PrepareData() async {
     utils.werash_List.clear();
     try {
-      await handleDriveData();
+      if(!(utils.sp.getKeys().contains("done") && utils.sp.getBool("done")))
+        await handleDriveData();
+      else{
+        print("right");
+      }
     }catch(d){
       print(d);
     } finally {

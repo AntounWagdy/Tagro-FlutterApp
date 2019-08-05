@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:contentful_rich_text/contentful_rich_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_youtube/flutter_youtube.dart';
 import 'Utilities.dart';
 import 'TaranemElement.dart';
 
@@ -48,7 +48,7 @@ Widget WerashBuild(BuildContext con){
             child: Center(
               child: Text(
 
-                  "يلا معلش",
+                  "إنتظرونا",
                   style: TextStyle(fontWeight: FontWeight.w500,fontSize: 30.0),
                   textDirection: TextDirection.rtl,
               ),
@@ -62,15 +62,24 @@ Widget WerashBuild(BuildContext con){
       child: ListView.builder(
         itemCount: utils.werash_List.length,
         itemBuilder: (context,index)=>
-           CreateElement(con, utils.werash_List[index].split("\n")[0], utils.werash_List[index].substring(utils.werash_List[index].split("\n")[0].length+1)),)
-  );
+           CreateElement(utils.werash_List[index].split(',')[0],utils.werash_List[index].split(',')[1])
+      ));
 }
 
-Widget CreateElement(BuildContext context ,String s, String content) {
+
+Widget CreateElement(String s, String videoId) {
   return Container(
     padding: EdgeInsets.only(right: 50),
     child: FlatButton(
-      onPressed:(){Navigator.of(context).push(MaterialPageRoute(builder: (context) => TaranemElement(s,content)));},
+      onPressed: () { // 2
+        //var youtube = new FlutterYoutube();
+        FlutterYoutube.playYoutubeVideoById(
+            apiKey: "AIzaSyABWU6ihkSSFKhG4ef6pl2s4DSDiP_I2O4",
+            videoId: videoId,
+            autoPlay: true,
+            fullScreen: true
+        );
+      },
       child: Row(
         textDirection: TextDirection.rtl,
         children: <Widget>[
@@ -95,7 +104,7 @@ Widget CreateElement(BuildContext context ,String s, String content) {
             child: Center(
                 child: Text(
                   s,
-                  style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.w900),
+                  style: TextStyle(fontSize: 20.0),
                 )),
             width: 120.0,
             height: 40.0,
@@ -106,6 +115,4 @@ Widget CreateElement(BuildContext context ,String s, String content) {
   );
 }
 
-prepareTarnemaElement(BuildContext context,String name,String content) {
-}
 

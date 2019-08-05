@@ -85,6 +85,7 @@ class DayaOneProgramBuild extends StatelessWidget {
                   s,
                   maxLines: 1,
                   style: TextStyle(fontSize: size, fontWeight: FontWeight.w900),
+                  textAlign: TextAlign.center,
                 ),
                 Text(
                   t,
