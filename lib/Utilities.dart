@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'AboutUs.dart';
 import 'BernamegHome.dart';
 import 'SendEmail.dart';
@@ -44,7 +43,6 @@ class Utitlies {
   String Gayeen;
   Color ThemeColor;
   Color ThemeColor2;
-  SharedPreferences sp;
   String hayaty;
   List<String> werash_List; // id, content
   Utitlies(){

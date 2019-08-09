@@ -86,7 +86,6 @@ class werash_prepare_screen extends StatelessWidget {
     }
     await download.writeAsBytes(data);
     print("Download: " + download.path + " has been downloaded");
-    utils.sp.setBool("done", true);
   }
 
   bool Has(List<FileSystemEntity> e, String id) {
@@ -124,11 +123,7 @@ class werash_prepare_screen extends StatelessWidget {
   Future<void> PrepareData() async {
     utils.werash_List.clear();
     try {
-      if(!(utils.sp.getKeys().contains("done") && utils.sp.getBool("done")))
-        await handleDriveData();
-      else{
-        print("right");
-      }
+      await handleDriveData();
     }catch(d){
       print(d);
     } finally {

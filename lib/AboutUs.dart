@@ -25,27 +25,12 @@ class AboutUs extends StatelessWidget {
 }
 
 AboutBuild(BuildContext context) {
-  FlatButton a = null;
-  Container b = null;
-  if(utils.sp == null || utils.sp.getBool('welcome')){
-    print("here");
-    utils.sp.setBool('welcome', false);
-    a = FlatButton(
-        child: utils.ebda2,
-        onPressed: () {
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>MyApp()));
-        });
-    b = Container(height: 15,);
-  }
-
   return ListView(
     children: <Widget>[
       utils.header,
       Center(child: Text(utils.klma,style: TextStyle(fontWeight: FontWeight.w700,fontSize: 23),textDirection: TextDirection.rtl,textAlign: TextAlign.center,)),
       Container(height: 10.0,),
       Center(child: Text(utils.klma_end,style: TextStyle(fontWeight: FontWeight.w900,fontSize: 26),textDirection: TextDirection.rtl,textAlign: TextAlign.center,)),
-      if(a!=null)a,
-      if(b!=null)b,
       utils.HPfooter
     ],
   );
