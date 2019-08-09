@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'Utilities.dart';
 import 'MyApp.dart';
 class AboutUs extends StatelessWidget {
